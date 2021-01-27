@@ -257,11 +257,13 @@
         }
 
         var launchFrom = function (x) {
+            let colorArray = [];
+            for (let i = 1, len = 255; i <= len; i++) {
+                colorArray.push(i);
+            }
             if (rockets.length < 10) {
                 var rocket = new Rocket(x);
-
-
-                rocket.explosionColor = random([10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]);
+                rocket.explosionColor = random(colorArray);
                 rocket.vel.y = Math.random() * -6 - 4;
                 rocket.vel.x = Math.random() * 6 - 3;
                 rocket.size = 8;
@@ -277,8 +279,8 @@
 
         // Append the canvas and start the loops
         $(fireworksField).append(canvas);
-        setInterval(launch, 800);
-        setInterval(loop, 1000 / 50);
+        setInterval(launch, 100);
+        setInterval(loop, 1000 / 1000);
 
         return fireworksField;
     };
